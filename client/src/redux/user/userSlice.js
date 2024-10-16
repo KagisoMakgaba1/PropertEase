@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { createSlice } from "@reduxjs/toolkit";
+=======
+import {createSlice} from "@reduxjs/toolkit";
+import {deleteUser} from "../../../../api/controllers/user.controller";
+>>>>>>> b2c97464cd7f4725cbeeb8bd8dec7d0c11965929
 
 const initialState = {
   currentUser: null,
@@ -46,6 +51,7 @@ const userSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
+<<<<<<< HEAD
   },
 });
 
@@ -60,5 +66,23 @@ export const {
   deleteUserSuccess,
   deleteUserStart,
 } = userSlice.actions;
+=======
+    signOutUserStart: (state) => {
+      state.loading = true;
+    },
+    signOutUserSuccess: (state) => {
+      state.currentUser = null;
+      state.loading = false;
+      state.error = null;
+    },
+    signOutUserFailure: (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
+    },
+  },
+});
+
+export const { signInStart, signInSuccess, signInFailure, updateUserFailure, updateUserStart, updateUserSuccess, deleteUserStart, deleteUserFailure, deleteUserSuccess, signOutUserFailure, signOutUserSuccess, signOutUserStart } = userSlice.actions;
+>>>>>>> b2c97464cd7f4725cbeeb8bd8dec7d0c11965929
 
 export default userSlice.reducer;
