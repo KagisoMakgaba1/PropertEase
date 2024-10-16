@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import { createSlice } from "@reduxjs/toolkit";
-=======
-import {createSlice} from "@reduxjs/toolkit";
-import {deleteUser} from "../../../../api/controllers/user.controller";
->>>>>>> b2c97464cd7f4725cbeeb8bd8dec7d0c11965929
+import { deleteUser } from "../../../../api/controllers/user.controller";
 
 const initialState = {
   currentUser: null,
@@ -51,22 +47,6 @@ const userSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
-<<<<<<< HEAD
-  },
-});
-
-export const {
-  signInStart,
-  signInSuccess,
-  signInFailure,
-  updateUserFailure,
-  updateUserStart,
-  updateUserSuccess,
-  deleteUserFailure,
-  deleteUserSuccess,
-  deleteUserStart,
-} = userSlice.actions;
-=======
     signOutUserStart: (state) => {
       state.loading = true;
     },
@@ -82,7 +62,19 @@ export const {
   },
 });
 
-export const { signInStart, signInSuccess, signInFailure, updateUserFailure, updateUserStart, updateUserSuccess, deleteUserStart, deleteUserFailure, deleteUserSuccess, signOutUserFailure, signOutUserSuccess, signOutUserStart } = userSlice.actions;
->>>>>>> b2c97464cd7f4725cbeeb8bd8dec7d0c11965929
+export const {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+  updateUserFailure,
+  updateUserStart,
+  updateUserSuccess,
+  deleteUserFailure,
+  deleteUserSuccess,
+  deleteUserStart,
+  signOutUserFailure,
+  signOutUserSuccess,
+  signOutUserStart,
+} = userSlice.actions;
 
 export default userSlice.reducer;
