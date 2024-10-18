@@ -165,7 +165,7 @@ export default function CreateListing() {
           />
           <textarea
             type="text"
-            placeholder="description"
+            placeholder="Description"
             className="border p-3 rounded-lg"
             id="description"
             required
