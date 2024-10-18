@@ -93,6 +93,7 @@ export default function Profile() {
       dispatch(updateUserFailure(error.message));
     }
   };
+  
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
@@ -109,6 +110,7 @@ export default function Profile() {
       dispatch(deleteUserFailure(error.message));
     }
   };
+
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
@@ -123,6 +125,7 @@ export default function Profile() {
       dispatch(deleteUserFailure(error.message));
     }
   };
+
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
@@ -137,6 +140,26 @@ export default function Profile() {
       setShowListingsError(true);
     }
   };
+
+  const handleListingDelete = async (listingId) => {
+    try {
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
+      }
+
+      setUserListings((prev) =>
+        prev.filter((listing) => listing._id !== listingId)
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
@@ -247,7 +270,7 @@ export default function Profile() {
                 <p>{listing.name}</p>
               </Link>
               <div className="flex flex-col item-center">
-                <button className="text-red-700 uppercase">Delete</button>
+                <button onClick={() => handleListingDelete(listing._id)} className="text-red-700 uppercase">Delete</button>
                 <button className="text-green-700 uppercase">Edit</button>
               </div>
             </div>
