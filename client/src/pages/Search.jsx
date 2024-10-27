@@ -2,7 +2,6 @@ import { set } from 'mongoose';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ListingItem from '../components/ListingItem';
-//import e from 'express';
 
 export default function Search() {
     const navigate = useNavigate()
